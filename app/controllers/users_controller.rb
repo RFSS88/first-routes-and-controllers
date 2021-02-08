@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
     def index
-        render plain: "I'm the index action!!"
+        render json: User.all
     end
 
     def create

@@ -816,3 +816,174 @@ Processing by UsersController#create as */*
 Completed 200 OK in 18ms (Views: 1.8ms | ActiveRecord: 10.6ms)
 
 
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Started POST "/users/?user[name]=Michu&user[email]=catus2@felinus.meow" for ::1 at 2021-02-08 18:10:10 -0500
+Processing by UsersController#create as */*
+  Parameters: {"user"=>{"name"=>"Michu", "email"=>"catus2@felinus.meow"}}
+  [1m[35m (1.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:9
+  [1m[36mUser Create (0.9ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Michu"], ["email", "catus2@felinus.meow"], ["created_at", "2021-02-08 23:10:10.614388"], ["updated_at", "2021-02-08 23:10:10.614388"]]
+  ↳ app/controllers/users_controller.rb:9
+  [1m[35m (43.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:9
+Completed 200 OK in 126ms (Views: 2.2ms | ActiveRecord: 93.3ms)
+
+
+Started GET "/users/1" for ::1 at 2021-02-08 18:15:20 -0500
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"1"}
+Completed 500 Internal Server Error in 71ms (ActiveRecord: 0.0ms)
+
+
+  
+NoMethodError (undefined method `params' for #<Class:0x00007f93790d2dc0>):
+  
+app/controllers/users_controller.rb:17:in `show'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+Started GET "/users/1" for ::1 at 2021-02-08 18:18:01 -0500
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17
+Completed 200 OK in 54ms (Views: 0.5ms | ActiveRecord: 12.3ms)
+
+
+Started GET "/users/3" for ::1 at 2021-02-08 18:18:27 -0500
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17
+Completed 200 OK in 2ms (Views: 0.3ms | ActiveRecord: 0.3ms)
+
+
+Started PUT "/users/3" for ::1 at 2021-02-08 18:26:17 -0500
+Processing by UsersController#update as */*
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:23
+Completed 400 Bad Request in 22ms (ActiveRecord: 11.8ms)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: user):
+  
+app/controllers/users_controller.rb:30:in `user_params'
+app/controllers/users_controller.rb:24:in `update'
+Started PUT "/users/3?user[name]=Michuuuuu&user[email]=catus2@felinus.meow" for ::1 at 2021-02-08 18:26:37 -0500
+Processing by UsersController#update as */*
+  Parameters: {"user"=>{"name"=>"Michuuuuu", "email"=>"catus2@felinus.meow"}, "id"=>"3"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:23
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:24
+  [1m[36mUser Update (44.8ms)[0m  [1m[33mUPDATE "users" SET "name" = $1, "email" = $2, "updated_at" = $3 WHERE "users"."id" = $4[0m  [["name", "Michuuuuu"], ["email", "catus2@felinus.meow"], ["updated_at", "2021-02-08 23:26:37.902210"], ["id", 3]]
+  ↳ app/controllers/users_controller.rb:24
+  [1m[35m (1.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:24
+Completed 200 OK in 52ms (Views: 0.6ms | ActiveRecord: 47.1ms)
+
+
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+Started PATCH "/users/3?user[name]=Mich&user[email]=catus2@felinus.meow" for ::1 at 2021-02-08 18:27:12 -0500
+Processing by UsersController#update as */*
+  Parameters: {"user"=>{"name"=>"Mich", "email"=>"catus2@felinus.meow"}, "id"=>"3"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:23
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:24
+  [1m[36mUser Update (4.0ms)[0m  [1m[33mUPDATE "users" SET "name" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["name", "Mich"], ["updated_at", "2021-02-08 23:27:12.986200"], ["id", 3]]
+  ↳ app/controllers/users_controller.rb:24
+  [1m[35m (1.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:24
+Completed 200 OK in 13ms (Views: 0.5ms | ActiveRecord: 6.7ms)
+
+
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+Started PATCH "/users/3?user[name]=Michu&user[email]=catus2@felinus.meow" for ::1 at 2021-02-08 18:27:52 -0500
+Processing by UsersController#update as */*
+  Parameters: {"user"=>{"name"=>"Michu", "email"=>"catus2@felinus.meow"}, "id"=>"3"}
+  [1m[36mUser Load (3.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:23
+  [1m[35m (4.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:24
+  [1m[36mUser Update (0.5ms)[0m  [1m[33mUPDATE "users" SET "name" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["name", "Michu"], ["updated_at", "2021-02-08 23:27:52.503284"], ["id", 3]]
+  ↳ app/controllers/users_controller.rb:24
+  [1m[35m (40.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:24
+Completed 200 OK in 54ms (Views: 0.4ms | ActiveRecord: 48.5ms)
+
+
+Started PATCH "/users/3?user[name]=Michuu&user[email]=catus2@felinus.meow" for ::1 at 2021-02-08 18:29:31 -0500
+Processing by UsersController#update as */*
+  Parameters: {"user"=>{"name"=>"Michuu", "email"=>"catus2@felinus.meow"}, "id"=>"3"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:23
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:23
+  [1m[36mUser Update (0.7ms)[0m  [1m[33mUPDATE "users" SET "name" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["name", "Michuu"], ["updated_at", "2021-02-08 23:29:31.694302"], ["id", 3]]
+  ↳ app/controllers/users_controller.rb:23
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:23
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:24
+Completed 200 OK in 32ms (Views: 1.0ms | ActiveRecord: 11.9ms)
+
+
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+Started PATCH "/users/3?user[name]=Michu&user[email]=catus2@felinus.meow" for ::1 at 2021-02-08 18:30:12 -0500
+Processing by UsersController#update as */*
+  Parameters: {"user"=>{"name"=>"Michu", "email"=>"catus2@felinus.meow"}, "id"=>"3"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:23
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:23
+  [1m[36mUser Update (0.6ms)[0m  [1m[33mUPDATE "users" SET "name" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["name", "Michu"], ["updated_at", "2021-02-08 23:30:12.830451"], ["id", 3]]
+  ↳ app/controllers/users_controller.rb:23
+  [1m[35m (54.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:23
+Completed 200 OK in 88ms (Views: 0.5ms | ActiveRecord: 65.8ms)
+
+
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Destroy (6.1ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 7]]
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Destroy (0.7ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 7]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+Started DELETE "/users/6?user[name]=Michu&user[email]=catus2@felinus.meow" for ::1 at 2021-02-08 18:37:58 -0500
+Processing by UsersController#destroy as */*
+  Parameters: {"user"=>{"name"=>"Michu", "email"=>"catus2@felinus.meow"}, "id"=>"6"}
+Completed 500 Internal Server Error in 272ms (ActiveRecord: 0.0ms)
+
+
+  
+NameError (undefined local variable or method `id' for #<UsersController:0x00007f93767757c0>):
+  
+app/controllers/users_controller.rb:29:in `destroy'
+Started DELETE "/users/6" for ::1 at 2021-02-08 18:38:37 -0500
+Processing by UsersController#destroy as */*
+  Parameters: {"id"=>"6"}
+Completed 500 Internal Server Error in 258ms (ActiveRecord: 0.0ms)
+
+
+  
+NameError (undefined local variable or method `id' for #<UsersController:0x00007f9379a1a108>):
+  
+app/controllers/users_controller.rb:29:in `destroy'
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Started DELETE "/users/6?user[name]=Michu&user[email]=catus2@felinus.meow" for ::1 at 2021-02-08 18:39:40 -0500
+Processing by UsersController#destroy as */*
+  Parameters: {"user"=>{"name"=>"Michu", "email"=>"catus2@felinus.meow"}, "id"=>"6"}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:29
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:29
+  [1m[36mUser Destroy (0.6ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 6]]
+  ↳ app/controllers/users_controller.rb:29
+  [1m[35m (3.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:29
+Completed 200 OK in 33ms (Views: 0.3ms | ActiveRecord: 18.3ms)
+
+
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
